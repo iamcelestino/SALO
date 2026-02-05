@@ -26,7 +26,8 @@ abstract class Controller
 
     protected function redirect(string $link): void
     {
-        header("location ". config('base_url') .trim($link, "/"));
+        header('Location: ' . config('base_url') . '/' . trim($link, '/'));
+        exit;
     }
 
 }

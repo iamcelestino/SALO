@@ -1,9 +1,0 @@
-RewriteEngine On
-
-# Redirect to public directory for the base URL
-RewriteRule ^$ public/ [L]
-
-# Forward all other requests to public/index.php
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]

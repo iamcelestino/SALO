@@ -9,7 +9,7 @@ abstract class Model extends Database
 {
     protected mixed $table;
     public array $errors = [];
-
+    
     public function __construct()
     {
         if(property_exists($this, 'table')) {
@@ -17,7 +17,7 @@ abstract class Model extends Database
         }
     }
 
-    protected function where(string $column, string $value): array|object|bool
+    public function where(string $column, mixed $value): array|object|bool
     {
         $column = addslashes($column);
         $query = "SELECT * FROM " . $this->table . " WHERE " . $column . " = :value";
@@ -28,7 +28,7 @@ abstract class Model extends Database
         return $data;
     }
 
-    protected function first(string $column, string $value): array|object|bool
+    public function first(string $column, string $value): array|object|bool
     {
         $column = addslashes($column);
         $query = "SELECT * FROM " . $this->table . " WHERE " . $column . " = :value";
@@ -36,14 +36,13 @@ abstract class Model extends Database
 
     }
 
-
     public function all(): array|object|bool
     {
         $query = "SELECT * FROM ". $this->table;
         return $this->query($query, []);
     }
 
-    public function insert(array $data): bool
+    public function insert(array $data): bool|array
     {
         $keys = array_keys($data);
         $columns = implode(',', $keys);
@@ -53,7 +52,7 @@ abstract class Model extends Database
         return $this->query($query, $data);
     }
 
-    public function upddate(mixed $id, array $data): mixed
+    public function update(mixed $id, array $data): array|bool
     {
         $string = '';
         foreach($data as $key => $value) {
@@ -72,7 +71,7 @@ abstract class Model extends Database
 
     }
 
-    protected function getPrimaryKey(): string|int
+    public function getPrimaryKey(): string|int
     {
         static $primaryKeys = [];
         if(!isset($primaryKeys[$this->table])) {
@@ -95,6 +94,26 @@ abstract class Model extends Database
         $query =  "DELETE FROM $this->table WHERE $primaryKey = :$primaryKey";
         $data[$primaryKey] = $id;
         return $this->query($query, $data);
+    }
+
+    public function lastInsertId(): int|string
+    {
+        return $this->connection()->lastInsertId();
+    }
+
+    public function beginTransaction(): void
+    {
+        $this->connection()->beginTransaction();
+    }
+
+    public function commit(): void
+    {
+        $this->connection()->commit();
+    }
+
+    public function rollBack(): void
+    {
+        $this->connection()->rollBack();
     }
 
 }

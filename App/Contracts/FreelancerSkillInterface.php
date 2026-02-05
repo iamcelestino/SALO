@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App\Contracts;
 
-interface UserInterface extends BaseInterface
+interface FreelancerSkillInterface extends BaseInterface
 {
-
+	
 }

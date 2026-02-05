@@ -1,8 +1,9 @@
-<?php 
+<?php
 declare(strict_types=1);
+
 namespace App\Contracts;
 
-interface UserInterface extends BaseInterface
+interface SkillInterface extends BaseInterface
 {
 
 }
