@@ -64,4 +64,21 @@ class PropostaController extends Controller
 		]);
 	}
 
+	public function delete(int $id): void
+	{
+		if (!$id) {
+			echo "this does't exist";
+		}
+
+		$proposta = $this->proposta->getPropostaById($id);
+
+		if ($_SERVER['REQUEST_METHOD']) {
+			$this->proposta->delete($id);
+		}
+
+		$this->view('deletar_proposta', [
+			'proposta' => $proposta[0]
+		]);
+	}
+
 }

@@ -21,6 +21,11 @@ class PropostaService
         $this->proposta->update($id, $dataProposta);
     }
 
+    public function delete(int $id): void
+    {
+        $this->proposta->delete($id);
+    }
+
     public function getPropostaByFreelancer(int $id): array|object
     {
         return $this->proposta->where('freelancer_id', $id);

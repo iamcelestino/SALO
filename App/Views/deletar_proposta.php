@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Freelancer</title>
+    <title>Deletar Freelancer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?=config('base_url')?>/css/output.css">
 </head>
@@ -34,7 +34,7 @@
 
             <div class="md:w-2/3 p-10 md:p-14">
                 <?php if($proposta): ?>
-                <form action="/proposta/update/<?= $proposta->id ?> " method="POST" class="space-y-6">
+                <form action="/proposta/delete/<?= $proposta->id ?> " method="POST" class="space-y-6">
                     
                     <div>
                         <label for="valor_proposto" class="block text-sm font-bold text-gray-700 mb-2">Valor Proposto</label>
@@ -51,10 +51,7 @@
                         <label for="status" class="block text-sm font-bold text-gray-700 mb-2">Estado da Disponibilidade</label>
                         <select name="status" id="status" 
                             class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:ring-4 focus:ring-emerald-100 focus:border-emerald-500 outline-none bg-white cursor-pointer transition">
-                            <option value="">Selecione a disponibilidade</option>
-                            <option value="pendente">Pendente</option>
-                            <option value="aceite">Aceite</option>
-                            <option value="rejeitada">Rejeitada</option>
+                            <option value="<?=$proposta->status?>"><?=$proposta->status?></option>
                         </select>
                     </div>
 
@@ -67,7 +64,7 @@
 
                     <div class="pt-4">
                         <button type="submit" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg shadow-emerald-100 active:scale-[0.98]">
-                            Editar Proposta
+                           Apagar Proposta
                         </button>
                         <p class="mt-4 text-center text-xs text-gray-400">
                             Ao enviar, o cliente será notificado imediatamente.
