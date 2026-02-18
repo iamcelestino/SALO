@@ -20,7 +20,8 @@ use App\Models\{
 use App\Controllers\{
 	SignupController, HomeController, 
 	LoginController, FreelancerController, 
-	ClienteController, TrabalhoController, PropostaController
+	ClienteController, TrabalhoController, PropostaController,
+	DashboardController
 };
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
@@ -47,6 +48,7 @@ $router->get('/freelancer', [FreelancerController::class, 'index']);
 $router->get('/freelancer/signup', [FreelancerController::class, 'create']);
 $router->post('/freelancer/signup', [FreelancerController::class, 'create']);
 
+$router->get('/clientes', [ClienteController::class, 'index']);
 $router->get('/cliente/signup', [ClienteController::class, 'create']);
 $router->post('/cliente/signup', [ClienteController::class, 'create']);
 
@@ -65,6 +67,8 @@ $router->get('/proposta/update/{id}', [PropostaController::class, 'update']);
 $router->post('/proposta/update/{id}', [PropostaController::class, 'update']);
 $router->get('/proposta/delete/{id}', [PropostaController::class, 'delete']);
 $router->post('/proposta/delete/{id}', [PropostaController::class, 'delete']);
+
+$router->get('/dashboard', [DashboardController::class, 'index']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

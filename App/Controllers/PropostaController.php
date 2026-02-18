@@ -19,8 +19,6 @@ class PropostaController extends Controller
 
 		$freelancer_id = $freelancer[0]->id;
 
-		print($freelancer_id);
-
 		$propostas = $this->proposta->getPropostaByFreelancer(5);
 		dd($propostas);
 
