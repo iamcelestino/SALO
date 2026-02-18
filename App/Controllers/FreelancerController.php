@@ -37,4 +37,14 @@ class FreelancerController extends Controller
 
 		$this->view('criar_freelancers', []);
 	}
+
+	// public function update(int $id): void 
+	// {
+
+	// }
+
+	// public function delete(int $id): void 
+	// {
+
+	// }
 }

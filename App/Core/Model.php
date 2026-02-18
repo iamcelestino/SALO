@@ -20,7 +20,7 @@ abstract class Model extends Database
     public function where(string $column, mixed $value): array|object|bool
     {
         $column = addslashes($column);
-        $query = "SELECT * FROM " . $this->table . " WHERE " . $column . " = :value";
+        $query = "SELECT * FROM " . $this->table . " WHERE " . $column . " = :value ";
         $data = $this->query($query, [
             'value' => $value
         ]);
@@ -91,7 +91,7 @@ abstract class Model extends Database
     public function delete(int|string $id) 
     {
         $primaryKey = $this->getPrimaryKey();
-        $query =  "DELETE FROM $this->table WHERE $primaryKey = :$primaryKey";
+        $query = "DELETE FROM $this->table WHERE $primaryKey = :$primaryKey";
         $data[$primaryKey] = $id;
         return $this->query($query, $data);
     }

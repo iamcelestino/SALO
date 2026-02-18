@@ -19,4 +19,19 @@ class TrabalhoService
 	{
 		return $this->trabalho->all();
 	}
+
+	public function getSingleTodo(int $id): array|object
+	{
+		return $this->trabalho->where('id', $id);
+	}
+
+	public function delete(int $id)
+	{
+		$this->trabalho->delete($id);
+	}
+
+	public function update(int $id, $data)
+	{
+		$this->trabalho->update($id, $data);
+	}
 }

@@ -7,6 +7,7 @@ use App\Contracts\{
 	SkillInterface,
 	FreelancerSkillInterface
 };
+use Exception;
 
 class FreelancerService 
 {
@@ -23,8 +24,7 @@ class FreelancerService
 			$this->freelancer->beginTransaction();
 
 			$this->freelancer->insert($freelancer);
-			$this->skill->insert($skill);
-
+				$this->skill->insert($skill);
 
 			$skillId = (int) $this->skill->lastInsertId();
 
@@ -34,9 +34,6 @@ class FreelancerService
             	throw new \Exception("Falha ao obter IDs gerados.");
         	}
 
-        	print($skillId );
-        	print($freelancerId);
-
 			$freelancerSkill = [
 				'freelancer_id' => $freelancerId,
 				'skill_id' => $skillId
@@ -45,9 +42,14 @@ class FreelancerService
 			$this->freelancerSkill->create($freelancerSkill);
 			$this->freelancer->commit();
 
-		} catch(\Exception $e) {
-			echo $e->message();
+		} catch(Exception $e) {
+			echo $e->getMessage();
 			$this->freelancer->rollBack();
 		}
+	}
+
+	public function getByUserId(int $id): array|object 
+	{
+		return $this->freelancer->getByUserId($id);
 	}
 }

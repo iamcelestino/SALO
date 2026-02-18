@@ -7,5 +7,8 @@ use App\Contracts\FreelancerInterface;
 
 class Freelancer extends Model implements FreelancerInterface
 {
-
+	public function getByUserId(int $id): array|object
+	{
+		return $this->where('user_id', $id);
+	}
 }

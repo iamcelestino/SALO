@@ -16,8 +16,6 @@ class TrabalhoController extends Controller
 	{
 		$trabalhos = $this->trabalho->getTodosTrabalhos();
 
-		dd($trabalhos);
-
 		$this->view('trabalhos',
 			[
 				'trabalhos' => $trabalhos
@@ -39,6 +37,40 @@ class TrabalhoController extends Controller
 		}
 
 		$this->view('criar_trabalho', []);
+	}
+
+	public function update(int $idTrabalho)
+	{
+		if (!$idTrabalho) {
+			echo "This id appearing";
+		}
+
+		$trabalho = $this->trabalho->getSingleTodo($idTrabalho);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$this->trabalho->update($idTrabalho, $_POST);
+		}
+
+		$this->view('editar_trabalho', [
+			'trabalho' => $trabalho[0]
+		]);
+	}
+
+	public function delete(int $idTrabalho)
+	{
+		if(!$idTrabalho) {
+			echo "this id is not appear";
+		}
+
+		$trabalho = $this->trabalho->getSingleTodo($idTrabalho);
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			$this->trabalho->delete($idTrabalho);
+		}
+
+		$this->view('deletar_trabalho', [
+			'trabalho' => $trabalho[0]
+		]);
 	}
 }
 

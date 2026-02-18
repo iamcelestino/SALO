@@ -5,5 +5,5 @@ namespace App\Contracts;
 
 interface FreelancerInterface extends BaseInterface
 {
-	
+	public function getByUserId(int $id): array|object;
 }

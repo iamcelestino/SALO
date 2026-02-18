@@ -53,9 +53,18 @@ $router->post('/cliente/signup', [ClienteController::class, 'create']);
 $router->get('/trabalhos', [TrabalhoController::class, 'index']);
 $router->get('/trabalhos/create', [TrabalhoController::class, 'create']);
 $router->post('/trabalhos/create', [TrabalhoController::class, 'create']);
+$router->get('/trabalho/delete/{id}', [TrabalhoController::class, 'delete']);
+$router->post('/trabalho/delete/{id}', [TrabalhoController::class, 'delete']);
+$router->get('/trabalho/update/{id}', [TrabalhoController::class, 'update']);
+$router->post('/trabalho/update/{id}', [TrabalhoController::class, 'update']);
 
+$router->get('/propostas', [PropostaController::class, 'index']);
 $router->get('/proposta/create/{id}', [PropostaController::class, 'create']);
 $router->post('/proposta/create/{id}', [PropostaController::class, 'create']);
+$router->get('/proposta/update/{id}', [PropostaController::class, 'update']);
+$router->post('/proposta/update/{id}', [PropostaController::class, 'update']);
+$router->get('/proposta/delete/{id}', [PropostaController::class, 'delete']);
+$router->post('/proposta/delete/{id}', [PropostaController::class, 'delete']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

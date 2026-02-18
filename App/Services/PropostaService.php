@@ -15,5 +15,19 @@ class PropostaService
     {
         $this->proposta->insert($proposta);
     }
-    
+
+    public function update(int $id, array $dataProposta): void 
+    {
+        $this->proposta->update($id, $dataProposta);
+    }
+
+    public function getPropostaByFreelancer(int $id): array|object
+    {
+        return $this->proposta->where('freelancer_id', $id);
+    }
+
+    public function getPropostaById(int $id): array|object
+    {
+        return $this->proposta->where('id', $id);
+    }
 }
