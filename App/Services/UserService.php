@@ -17,6 +17,8 @@ class UserService
 
             $this->user->beginTransaction();
 
+            $userData['password'] = password_hash($userData['password'], PASSWORD_DEFAULT);
+
             $this->user->insert($userData);
 
             $userId = $this->user->lastInsertId();
@@ -28,6 +30,15 @@ class UserService
         } catch (Exception $e) {
             $this->user->rollBack();
             throw $e;
+        }
+    }
+
+    public function login(array $data): bool
+    {
+        $user = $this->user->where('email', $data['email'])[0] ?? null;
+
+        if ($user && password_verify($data['password'], $user->password)) {
+            return true;
         }
     }
     

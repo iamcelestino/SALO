@@ -8,7 +8,7 @@
             <p class="text-gray-500">Welcome back! Please login.</p>
         </div>
 
-        <form method="POST" class="space-y-6">
+        <form action="/login" method="POST" class="space-y-6">
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                 <input type="email" name="email" id="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-500 outline-none transition">

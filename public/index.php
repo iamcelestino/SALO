@@ -41,6 +41,7 @@ $router = new Router($container);
 
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/login', [LoginController::class, 'index']);
+$router->post('/login', [LoginController::class, 'index']);
 $router->get('/signup', [SignupController::class, 'index']);
 $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/freelancer', [FreelancerController::class, 'index']);
