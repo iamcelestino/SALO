@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Dashboard | JobStream</title>
-</head>
+<?php $this->view('partials/head') ?>
 <body class="bg-gray-50 font-sans text-gray-900">
 
     <div class="flex min-h-screen">
@@ -23,6 +16,9 @@
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>💬</span> Mensagens
+                </a>
+                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                    <span>💬</span> Contratos
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>⚙️</span> Configurações

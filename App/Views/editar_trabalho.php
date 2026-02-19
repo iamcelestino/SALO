@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar trabalho</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="<?=config('base_url')?>/css/output.css">
-</head>
+<?php $this->view('partials/head') ?>
 <body>
     <main>
 <div class="min-h-screen bg-gray-50 py-12 px-6">

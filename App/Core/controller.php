@@ -7,7 +7,7 @@ abstract class Controller
 {
     abstract protected function index(): void;
 
-    protected function view(string $view, array $data): void
+    protected function view(string $view, array $data = []): void
     {
         extract($data);
         $path = "../App/Views/{$view}.php";

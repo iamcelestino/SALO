@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Clientes | Salo</title>
-</head>
+<?php $this->view('partials/head') ?>
 <body class="bg-gray-50 font-sans text-gray-900">
-    <nav class="bg-white border-b border-gray-100 py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+<!--     <nav class="bg-white border-b border-gray-100 py-4 px-6 flex justify-between items-center sticky top-0 z-50">
         <div class="text-2xl font-bold text-emerald-600 tracking-tight">Salo</div>
         <div class="space-x-8 hidden md:flex font-medium text-gray-600">
             <a href="/" class="hover:text-emerald-600 transition">Início</a>
@@ -17,8 +10,8 @@
         <div class="space-x-3">
             <button class="px-5 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition">Postar Vaga</button>
         </div>
-    </nav>
-
+    </nav> -->
+    <?php $this->view('partials/nav') ?>
     <header class="bg-white border-b border-gray-100 py-16">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Empresas de Destaque</h1>

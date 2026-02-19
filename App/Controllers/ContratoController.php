@@ -8,4 +8,9 @@ class ContratoController extends Controller
 	{
 		$this->view('contratos', []);
 	}
+
+	public function create(): void 
+	{
+		
+	}
 }
