@@ -7,7 +7,6 @@
     <title>Clientes | Salo</title>
 </head>
 <body class="bg-gray-50 font-sans text-gray-900">
-
     <nav class="bg-white border-b border-gray-100 py-4 px-6 flex justify-between items-center sticky top-0 z-50">
         <div class="text-2xl font-bold text-emerald-600 tracking-tight">Salo</div>
         <div class="space-x-8 hidden md:flex font-medium text-gray-600">

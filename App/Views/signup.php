@@ -12,7 +12,7 @@
 <div class="min-h-screen bg-gray-50 flex items-center justify-center p-6">
     <div class="max-w-4xl w-full bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
         <div class="md:w-1/2 bg-emerald-700 p-12 text-white flex flex-col justify-center">
-            <h2 class="text-3xl font-bold mb-4">Join JobStream</h2>
+            <h2 class="text-3xl font-bold mb-4">Junta-te a SALO</h2>
             <p class="text-emerald-100 italic">"The best way to predict the future is to create it."</p>
         </div>
 

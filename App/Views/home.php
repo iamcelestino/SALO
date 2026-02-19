@@ -14,8 +14,8 @@
     <nav class="bg-white border-b border-gray-100 py-4 px-6 flex justify-between items-center sticky top-0 z-50">
         <div class="text-2xl font-bold text-emerald-600 tracking-tight">Salo</div>
         <div class="space-x-8 hidden md:flex font-medium text-gray-600">
-            <a href="#" class="hover:text-emerald-600 transition">Achar Vagas</a>
-            <a href="#" class="hover:text-emerald-600 transition">Empresas</a>
+            <a href="#" class="hover:text-emerald-600 transition">Trabahos</a>
+            <a href="#" class="hover:text-emerald-600 transition">Clientes</a>
             <a href="#" class="hover:text-emerald-600 transition">Salários</a>
         </div>
         <div class="space-x-3">

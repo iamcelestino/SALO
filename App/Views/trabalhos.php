@@ -12,8 +12,8 @@
         <div class="text-2xl font-bold text-emerald-600 tracking-tight">Salo</div>
         <div class="space-x-8 hidden md:flex font-medium text-gray-600">
             <a href="/" class="hover:text-emerald-600 transition">Início</a>
-            <a href="#" class="text-emerald-600 font-bold">Achar Vagas</a>
-            <a href="#" class="hover:text-emerald-600 transition">Empresas</a>
+            <a href="#" class="text-emerald-600 font-bold">Trabalhos</a>
+            <a href="#" class="hover:text-emerald-600 transition">Clientes</a>
         </div>
         <div class="space-x-3">
             <button class="px-5 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition">Entrar</button>
