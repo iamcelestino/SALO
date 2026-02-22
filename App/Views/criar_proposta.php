@@ -25,7 +25,8 @@
             </div>
 
             <div class="md:w-2/3 p-10 md:p-14">
-                <form action="/proposta/create/3" method="POST" class="space-y-6">
+                <?php print($trabalhoId); ?>
+                <form action="/proposta/create/<?= $trabalhoId ?>" method="POST" class="space-y-6">
                     
                     <div>
                         <label for="valor_proposto" class="block text-sm font-bold text-gray-700 mb-2">Valor Proposto</label>

@@ -12,6 +12,12 @@ function config($key, $default = null): mixed
     return $config[$key] ?? $default;
 }
 
+function getloggedInFreelancer(int $userId, object $freelancer): int 
+{
+    $freelancer = $freelancer->getByUserId($userId);
+    return $freelancer_id = $freelancer[0]->id;
+}
+
 function dd(mixed $data) {
     echo '<pre>';
         print_r($data);

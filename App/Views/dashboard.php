@@ -1,12 +1,11 @@
-<?php $this->view('partials/head') ?>
+
 <body class="bg-gray-50 font-sans text-gray-900">
 
     <div class="flex min-h-screen">
         <aside class="w-64 bg-emerald-950 text-white hidden md:flex flex-col sticky top-0 h-screen">
             <div class="p-8 text-2xl font-bold text-emerald-400 tracking-tight">
-                JobStream
+                Salo.
             </div>
-            
             <nav class="flex-1 px-4 space-y-2">
                 <a href="#" class="flex items-center gap-3 px-4 py-3 bg-emerald-800 rounded-xl text-white font-medium">
                     <span>📊</span> Dashboard

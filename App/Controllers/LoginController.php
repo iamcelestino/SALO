@@ -6,7 +6,6 @@ use App\Services\UserService;
 
 class LoginController extends Controller
 {
-
     public function __construct(
         protected UserService $user
     ){}
@@ -15,8 +14,8 @@ class LoginController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->user->login($_POST);
+            $this->redirect('/');
         }
-
         $this->view('login', []);
     }
 }

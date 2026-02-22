@@ -35,11 +35,17 @@ class UserService
 
     public function login(array $data): bool
     {
-        $user = $this->user->where('email', $data['email'])[0] ?? null;
+        $user = $this->user->where('email', $data['email']) ?? null;
 
-        if ($user && password_verify($data['password'], $user->password)) {
+        if ($user && password_verify($data['password'], $user[0]->password)) {
+            $this->authenticate($user);
             return true;
         }
+    }
+
+    public function authenticate(array $user): void
+    {
+        $_SESSION['USER'] = $user;
     }
     
 }

@@ -14,13 +14,12 @@ class PropostaController extends Controller
 
 	public function index(): void 
 	{
-		$userId = $_SESSION['signup_user_id'] ?? null;
+		$userId = $_SESSION['USER'][0]->id ?? null;
 		$freelancer = $this->freelancer->getByUserId($userId);
-
 		$freelancer_id = $freelancer[0]->id;
+		print($freelancer_id);
 
-		$propostas = $this->proposta->getPropostaByFreelancer(5);
-		dd($propostas);
+		$propostas = $this->proposta->getPropostaByFreelancer($freelancer_id);
 
 		$this->view('propostas', 
 			[
@@ -37,12 +36,17 @@ class PropostaController extends Controller
 
 		$trabalhoId = $id;
 
+		$userId = $_SESSION['USER'][0]->id ?? null;
+
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$_POST['trabalhos_id'] = $trabalhoId;
-			$_POST['freelancer_id'] = 5;
+			$_POST['freelancer_id'] = getloggedInFreelancer($userId, $this->freelancer) ?? null;
 			$this->proposta->create($_POST);
+			$this->redirect('/trabalhos');
 		}
-		$this->view('criar_proposta', []);
+
+
+		$this->view('criar_proposta',['trabalhoId' => $trabalhoId]);
 	}
 
 	public function update(int $id): void 

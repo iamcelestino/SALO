@@ -6,6 +6,10 @@
         <!-- <a href="<?=config('base_url')?>" class="hover:text-emerald-600 transition"></a> -->
     </div>
     <div class="space-x-3">
-        <button class="px-5 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition">Postar Vaga</button>
+        <button class="px-5 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition">
+        <a href="/trabalhos/create" title="">
+            Postar Vaga
+        </a>
+        </button>
     </div>
 </nav>
