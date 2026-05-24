@@ -28,21 +28,13 @@ class SignupController extends Controller
             };
 
             $userId = $this->user->signup($_POST);
-<<<<<<< HEAD
-=======
             $this->user->authenticate($_POST);
->>>>>>> 82131aa (add more files)
             $_SESSION['signup_user_id'] = $userId;
 
             $this->redirect($redirect);
             exit();
         }
-<<<<<<< HEAD
         $this->view('signup', []);
     }
 }
-=======
-            $this->view('signup', []);
-        }
-    }
->>>>>>> 82131aa (add more files)
+

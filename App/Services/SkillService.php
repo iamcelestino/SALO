@@ -1,20 +1,12 @@
 <?php
-<<<<<<< HEAD
-declare(strict_types=1);
-
-namespace App\Services;
-=======
-
 declare(strict_types=1);
 
 namespace App\Services;
 
->>>>>>> 82131aa (add more files)
 use App\Contracts\SkillInterface;
 
 class SkillService
 {
-<<<<<<< HEAD
 	public function __construct(
 		protected SkillInterface $skill
 	){}
@@ -24,7 +16,6 @@ class SkillService
 		$this->skill->insert($skill);
 	}
 }
-=======
     public function __construct(
         private readonly SkillInterface $skillModel
     ) {}
@@ -96,4 +87,3 @@ class SkillService
         return $this->validate($data);
     }
 }
->>>>>>> 82131aa (add more files)

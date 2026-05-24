@@ -14,10 +14,6 @@ class ClienteController extends Controller
 	public function index(): void 
 	{
 		$this->view('clientes', []);
-<<<<<<< HEAD
-=======
-
->>>>>>> 82131aa (add more files)
 	}
 
 	public function create(): void 
@@ -30,10 +26,7 @@ class ClienteController extends Controller
 				'empresa_nome' => $_POST['empresa_nome'],
 				'sector'       => $_POST['sector']
 			];
-<<<<<<< HEAD
 
-=======
->>>>>>> 82131aa (add more files)
 			$this->cliente->create($dados_cliente);
 		}
 

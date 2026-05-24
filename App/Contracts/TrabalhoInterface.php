@@ -5,9 +5,5 @@ namespace App\Contracts;
 
 interface TrabalhoInterface extends BaseInterface
 {
-<<<<<<< HEAD
-	
-=======
 	public function getTrabalhosByClienteId(int $id): array|object;
->>>>>>> 82131aa (add more files)
 }

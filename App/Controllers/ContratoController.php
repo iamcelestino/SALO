@@ -1,21 +1,4 @@
 <?php
-<<<<<<< HEAD
-namespace App\Controllers;
-use App\Core\Controller;
-
-class ContratoController extends Controller
-{
-	public function index(): void;
-	{
-		$this->view('contratos', []);
-	}
-
-	public function create(): void 
-	{
-		
-	}
-}
-=======
 
 declare(strict_types=1);
 
@@ -131,4 +114,3 @@ class ContratoController extends Controller
         }
     }
 }
->>>>>>> 82131aa (add more files)
