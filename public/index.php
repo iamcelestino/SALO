@@ -9,19 +9,31 @@ use App\Core\{Database, Container, Config};
 use App\Contracts\{
 	UserInterface, FreelancerInterface, 
 	ClienteInterface, TrabalhoInterface,
+<<<<<<< HEAD
 	PropostaInterface, FreelancerSkillInterface, SkillInterface
+=======
+	PropostaInterface, FreelancerSkillInterface, SkillInterface, ContratoInterface
+>>>>>>> 82131aa (add more files)
 };
 
 use App\Models\{
 	User, Freelancer, 
+<<<<<<< HEAD
 	Cliente, Trabalho, Proposta, FreelancerSkill, Skill
+=======
+	Cliente, Trabalho, Proposta, FreelancerSkill, Skill, Contrato
+>>>>>>> 82131aa (add more files)
 };
 
 use App\Controllers\{
 	SignupController, HomeController, 
 	LoginController, FreelancerController, 
 	ClienteController, TrabalhoController, PropostaController,
+<<<<<<< HEAD
 	DashboardController
+=======
+	DashboardController, ContratoController
+>>>>>>> 82131aa (add more files)
 };
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
@@ -37,6 +49,10 @@ $container->bind(TrabalhoInterface::class, Trabalho::class);
 $container->bind(PropostaInterface::class, Proposta::class);
 $container->bind(FreelancerSkillInterface::class, FreelancerSkill::class);
 $container->bind(SkillInterface::class, Skill::class);
+<<<<<<< HEAD
+=======
+$container->bind(ContratoInterface::class, Contrato::class);
+>>>>>>> 82131aa (add more files)
 $router = new Router($container);
 
 $router->get('/', [HomeController::class, 'index']);
@@ -61,6 +77,10 @@ $router->post('/trabalho/delete/{id}', [TrabalhoController::class, 'delete']);
 $router->get('/trabalho/update/{id}', [TrabalhoController::class, 'update']);
 $router->post('/trabalho/update/{id}', [TrabalhoController::class, 'update']);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82131aa (add more files)
 $router->get('/propostas', [PropostaController::class, 'index']);
 $router->get('/proposta/create/{id}', [PropostaController::class, 'create']);
 $router->post('/proposta/create/{id}', [PropostaController::class, 'create']);
@@ -69,7 +89,16 @@ $router->post('/proposta/update/{id}', [PropostaController::class, 'update']);
 $router->get('/proposta/delete/{id}', [PropostaController::class, 'delete']);
 $router->post('/proposta/delete/{id}', [PropostaController::class, 'delete']);
 
+<<<<<<< HEAD
 $router->get('/dashboard', [DashboardController::class, 'index']);
+=======
+$router->get('/contrato', [ContratoController::class, 'index']);
+
+$router->get('/dashboard', [DashboardController::class, 'index']);
+$router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->get('/cliente/dashboard', [DashboardController::class, 'index']);
+$router->get('/freelancer/dashboard', [DashboardController::class, 'index']);
+>>>>>>> 82131aa (add more files)
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
