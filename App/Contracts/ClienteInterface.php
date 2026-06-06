@@ -5,5 +5,6 @@ namespace App\Contracts;
 
 interface ClienteInterface extends BaseInterface
 {
+	public function getTodosClientes(): array;
 	public function getClienteById(int $id): mixed;
 }

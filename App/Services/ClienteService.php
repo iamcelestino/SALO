@@ -15,8 +15,18 @@ class ClienteService
 		$this->cliente->insert($dado_cliente);
 	}
 
+	public function getTodosClientes(): array
+	{
+		return $this->cliente->getTodosClientes();
+	}
+
 	public function getClienteById(int $id): mixed
 	{
 		return $this->cliente->getClienteById($id);
+	}
+
+	public function getContratosByCliente(int $id): array|object
+	{
+		return $this->cliente->findByCliente($id);
 	}
 }

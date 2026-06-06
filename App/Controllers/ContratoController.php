@@ -11,68 +11,85 @@ use App\Contracts\{TrabalhoInterface, FreelancerInterface, ClienteInterface};
 class ContratoController extends Controller
 {
     public function __construct(
-        private readonly ContratoService      $contratoService,
-        private readonly TrabalhoInterface    $trabalhoModel,
-        private readonly FreelancerInterface  $freelancerModel,
-        private readonly ClienteInterface     $clienteModel
+        private readonly ContratoService      $contrato,
+        private readonly TrabalhoInterface    $trabalho,
+        private readonly FreelancerInterface  $freelancer,
+        private readonly ClienteInterface     $cliente
     ) {}
 
     public function index(): void
     {
-        // $this->requireAuth();
+        if(!$this->usuario->isLogged()) {
+            $this->redirect('/login');
+        }
 
-        $user = $_SESSION['user'];
-        $contratos = match ($user['role']) {
-            'freelancer' => $this->contratoService->getContratosByFreelancer(
-                (int) $_SESSION['freelancer_id']
-            ),
-            'cliente'    => $this->contratoService->getContratosByCliente(
-                (int) $_SESSION['cliente_id']
-            ),
-            default      => $this->contratoService->getAllContratos(),
-        };
+        $user = $_SESSION['USER'];
+        $contratos = $this->contrato->getAllContratos();
+        dd($contratos);
+        // $contratos = match ($user[0]->role) {
+        //     'freelancer' => $this->contrato->getContratosByFreelancer(
+        //         (int) $user[0]->id
+        //     ),
+        //     'cliente'    => $this->contrato->getContratosByCliente(
+        //         (int) $user[0]->id
+        //     ),
+        //     default      => $this->contrato->getAllContratos(),
+        // };
 
-        $this->view('contratos', 
-            [
-            
-            ]
-        );
+        $this->view('contratos', [
+            'contratos' => $contratos
+        ]);
     }
 
-    public function create(): void
+    public function create(int $id): void
     {
-        $this->requireAuth();
+        if (!$id) {
+            echo "Este trabalho não existe";
+            return;
+        }
 
-        $trabalhos   = $this->trabalhoModel->all();
-        $freelancers = $this->freelancerModel->all();
-        $clientes    = $this->clienteModel->all();
-        $errors      = [];
-        $old         = [];
+        $trabalho = $this->trabalho->getTrabalhoById($id);
+
+        if (!$trabalho) {
+            echo "Este trabalho não existe";
+            return;
+        }
+
+        $errors = [];
+        $old    = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = [
+            $old = [
                 'trabalho_id'   => $_POST['trabalho_id']   ?? '',
                 'freelancer_id' => $_POST['freelancer_id'] ?? '',
                 'client_id'     => $_POST['client_id']     ?? '',
                 'data_inicio'   => $_POST['data_inicio']   ?? '',
-                'data_fim'      => $_POST['data_fim']      ?? null,
-                'status'        => $_POST['status']        ?? 'ativo',
+                'data_fim'      => $_POST['data_fim']       ?? null,
+                'status'        => $_POST['status']         ?? 'ativo',
             ];
-            $old = $data;
 
-            $errors = $this->contratoService->getValidationErrors($data);
+            dd($errors);
+            dd($old);
 
             if (empty($errors)) {
-                $id = $this->contratoService->createContrato($data);
-                if ($id) {
-                    $_SESSION['flash'] = ['type' => 'success', 'msg' => 'Contrato criado com sucesso!'];
+                $newId = $this->contratoService->createContrato($old);
+                if ($newId) {
+                    $_SESSION['flash'] = [
+                        'type' => 'success',
+                        'msg'  => 'Contrato criado com sucesso!',
+                    ];
                     $this->redirect('/contratos');
+                    return;
                 }
                 $errors[] = 'Erro ao criar contrato. Verifique os dados.';
             }
         }
 
-        $this->view('contratos/create', compact('trabalhos', 'freelancers', 'clientes', 'errors', 'old'));
+        $this->view('criar_contrato', [
+            'trabalho' => $trabalho[0],  // single object, not an array of objects
+            'errors'   => $errors,
+            'old'      => $old,
+        ]);
     }
 
     public function update(int $id): void
@@ -107,10 +124,4 @@ class ContratoController extends Controller
         $this->view('contratos/update', compact('contrato', 'errors'));
     }
 
-    private function requireAuth(): void
-    {
-        if (empty($_SESSION['user'])) {
-            $this->redirect('/login');
-        }
-    }
 }

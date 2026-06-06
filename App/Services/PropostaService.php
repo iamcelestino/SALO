@@ -26,9 +26,19 @@ class PropostaService
         $this->proposta->delete($id);
     }
 
-    public function getPropostaByFreelancer(int $id): array|object
+    public function getTodasPropostas(): array|object
     {
-        return $this->proposta->where('freelancer_id', $id);
+        return $this->proposta->getTodasPropostas();
+    }
+
+    public function getPropostasByFreelancer(int $id): array|object
+    {
+        return $this->proposta->getPropostasByFreelancer($id);
+    }
+
+    public function getPropostasByCliente(int $id): array|object
+    {
+        return $this->proposta->getPropostasByCliente($id);
     }
 
     public function getPropostaById(int $id): array|object

@@ -48,8 +48,13 @@ class FreelancerService
 		}
 	}
 
-	public function getByUserId(int $id): array|object 
+	public function getByFreelancerByUserId(int $id): array|object 
 	{
-		return $this->freelancer->getByUserId($id);
+		return $this->freelancer->getByFreelancerByUserId($id);
+	}
+
+	public function getTodosFreelancers(): array|object
+	{
+		return $this->freelancer->getTodosFreelancers();
 	}
 }

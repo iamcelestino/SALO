@@ -1,23 +1,9 @@
 <?php
-<<<<<<< HEAD
 declare(strict_types=1);
 
 namespace App\Models;
 use App\Core\Model;
 use App\Contracts\SkillInterface;
-
-class Skill extends Model implements SkillInterface
-{
-
-}
-=======
-
-declare(strict_types=1);
-
-namespace App\Models;
-
-use App\Contracts\SkillInterface;
-use App\Core\Model;
 
 class Skill extends Model implements SkillInterface
 {
@@ -31,4 +17,3 @@ class Skill extends Model implements SkillInterface
         return $result ?: null;
     }
 }
->>>>>>> 82131aa (add more files)

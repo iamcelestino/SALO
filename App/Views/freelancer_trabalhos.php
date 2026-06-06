@@ -15,7 +15,7 @@
                  <a href="/freelancer/contratos" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>💬</span> Contratos
                 </a>
-                <a href="/freelancer/propostas" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                 <a href="/freelancer/contratos" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>💬</span> Propostas
                 </a>
                 <a href="/config" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
@@ -46,24 +46,6 @@
             </header>
 
             <div class="p-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                        <p class="text-gray-500 text-sm font-medium">Trabalhos Ativos</p>
-                        <h3 class="text-3xl font-bold text-gray-900 mt-1">12</h3>
-                        <span class="text-emerald-600 text-xs font-bold mt-2 inline-block">↑ 2 este mês</span>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                        <p class="text-gray-500 text-sm font-medium">Ganhos Totais</p>
-                        <h3 class="text-3xl font-bold text-gray-900 mt-1">$4,250</h3>
-                        <span class="text-emerald-600 text-xs font-bold mt-2 inline-block">+15% vs mês passado</span>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                        <p class="text-gray-500 text-sm font-medium">Propostas Enviadas</p>
-                        <h3 class="text-3xl font-bold text-gray-900 mt-1">45</h3>
-                        <span class="text-gray-400 text-xs mt-2 inline-block">8 aguardando resposta</span>
-                    </div>
-                </div>
-
                 <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                     <div class="p-6 border-b border-gray-100 flex justify-between items-center">
                         <h4 class="font-bold text-gray-900">Atividade Recente</h4>
@@ -82,7 +64,9 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Proposto</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status da Proposta</th>
                                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acções</th>
-                            </tr>                            <?php foreach($trabalhos as $trabalho): ?>
+                            </tr>
+                        </thead>
+                            <?php foreach($trabalhos as $trabalho): ?>
                             <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->titulo; ?></td>
@@ -103,7 +87,6 @@
                                     </tr>
                             </tbody>
                             <?php endforeach ?>
-                        </thead>
                     <?php else: ?>
                         <tbody class="bg-white divide-y divide-gray-200">
                             <tr>

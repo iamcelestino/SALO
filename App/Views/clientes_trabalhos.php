@@ -6,23 +6,22 @@
                 Salo.
             </div>
             <nav class="flex-1 px-4 space-y-2">
-                <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 bg-emerald-800 rounded-xl text-white font-medium">
-                    <span>📊</span>Dashboard
+                <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                    <span>📊</span> Dashboard
                 </a>
-                <a href="/freelancer/trabalhos" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                <a href="/cliente/trabalhos" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>💼</span> Meus Trabalhos
                 </a>
-                 <a href="/freelancer/contratos" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
-                    <span>💬</span> Contratos
+                <a href="/cliente/propostas" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                    <span>💼</span> Propostas recebidas
                 </a>
-                <a href="/freelancer/propostas" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
-                    <span>💬</span> Propostas
+                <a href="/cliente/contrato" class="flex items-center gap-3 px-4 py-3 bg-emerald-800 rounded-xl text-white font-medium">
+                    <span>📄</span> Contratos
                 </a>
-                <a href="/config" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>⚙️</span> Configurações
                 </a>
             </nav>
-
             <div class="p-6 border-t border-emerald-900">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center font-bold">JD</div>
@@ -76,34 +75,28 @@
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Titulo</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descricao</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Freelancer</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Orcamento</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nivel requerido</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Proposto</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status da Proposta</th>
-                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acções</th>
-                            </tr>                            <?php foreach($trabalhos as $trabalho): ?>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nivel Requerido</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acções</th>
+                            </tr>
+                        </thead>
+                            <?php foreach($trabalhos as $trabalho): ?>
+                                <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->titulo; ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->descricao; ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->nome_freelancer; ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->orcamento;?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->nivel_requerido?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->valor_proposto?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <?=$trabalho->status_proposta?>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <a href="/trabalho/update/<?=$trabalho->id;?>" title="">editar</a>
-                                            <a href="/trabalho/delete/<?=$trabalho->id;?>"title="">apagar</a>
-                                             <a href="/contrato/create/<?=$trabalho->id_trabalho;?>" title="">Enviar Contrato</a>
-                                          <a href="<?=$trabalho->id_trabalho;?>" title="">Ver perfil</a>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $trabalho->titulo ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $trabalho->descricao ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $trabalho->orcamento ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $trabalho->nivel_requerido ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?= $trabalho->status ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap flex gap-3">
+                                            <a href="/trabalho/update/<?= $trabalho->id_trabalho ?>" class="text-blue-600 hover:underline">Editar</a>
+                                            <a href="/trabalho/delete/<?= $trabalho->id_trabalho ?>" class="text-red-600 hover:underline">Apagar</a>
+                                            <a href="/contrato/create/<?= $trabalho->id_trabalho ?>" class="text-emerald-600 hover:underline">Enviar Contrato</a>
                                         </td>
                                     </tr>
-                            </tbody>
-                            <?php endforeach ?>
-                        </thead>
+                                </tbody>
+                                <?php endforeach ?>
                     <?php else: ?>
                         <tbody class="bg-white divide-y divide-gray-200">
                             <tr>

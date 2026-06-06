@@ -1,26 +1,12 @@
 <?php
-<<<<<<< HEAD
 declare(strict_types=1);
 
 namespace App\Models;
 use App\Core\Model;
 use App\Contracts\FreelancerSkillInterface;
-=======
-
-declare(strict_types=1);
-
-namespace App\Models;
-
-use App\Contracts\FreelancerSkillInterface;
-use App\Core\Model;
->>>>>>> 82131aa (add more files)
 
 class FreelancerSkill extends Model implements FreelancerSkillInterface
 {
-
-<<<<<<< HEAD
-}
-=======
     public function findByFreelancer(int $freelancerId): array
     {
         $stmt = $this->db->prepare(
@@ -72,4 +58,3 @@ class FreelancerSkill extends Model implements FreelancerSkillInterface
         ]);
     }
 }
->>>>>>> 82131aa (add more files)

@@ -9,37 +9,32 @@ use App\Contracts\ContratoInterface;
 class ContratoService
 {
     public function __construct(
-        private readonly ContratoInterface $contratoModel
+        private readonly ContratoInterface $contrato
     ) {}
 
     public function getAllContratos(): array
     {
-        return $this->contratoModel->all();
+        return $this->contrato->all();
     }
 
     public function getContratoById(int $id): ?array
     {
-        return $this->contratoModel->find($id) ?: null;
+        return $this->contrato->find($id) ?: null;
     }
 
     public function getContratosByFreelancer(int $freelancerId): array
     {
-        return $this->contratoModel->findByFreelancer($freelancerId);
+        return $this->contrato->findByFreelancer($freelancerId);
     }
 
     public function getContratosByCliente(int $clienteId): array
     {
-        return $this->contratoModel->findByCliente($clienteId);
+        return $this->contrato->findByCliente($clienteId);
     }
 
-    public function createContrato(array $data): bool|int
+    public function createContrato(array $data): array|bool|int
     {
-        $errors = $this->validate($data);
-        if (!empty($errors)) {
-            return false;
-        }
-
-        return $this->contratoModel->create([
+        return $this->contrato->insert([
             'trabalho_id'  => (int) $data['trabalho_id'],
             'freelancer_id' => (int) $data['freelancer_id'],
             'client_id'    => (int) $data['client_id'],
@@ -53,7 +48,7 @@ class ContratoService
     {
         $contrato = $this->getContratoById($id);
         if (!$contrato) {
-            return false;
+            return       false;
         }
 
         $errors = $this->validate($data, updating: true);
@@ -61,30 +56,30 @@ class ContratoService
             return false;
         }
 
-        return $this->contratoModel->update($id, [
+        return $this->contrato->update($id, [
             'data_inicio' => $data['data_inicio'] ?? $contrato['data_inicio'],
             'data_fim'    => $data['data_fim']    ?? $contrato['data_fim'],
             'status'      => $data['status']      ?? $contrato['status'],
         ]);
     }
 
-    private function validate(array $data, bool $updating = false): array
-    {
-        $errors = [];
+    // private function validate(array $data, bool $updating = false): array
+    // {
+    //     $errors = [];
 
-        if (!$updating) {
-            if (empty($data['trabalho_id']))  $errors[] = 'Trabalho é obrigatório.';
-            if (empty($data['freelancer_id'])) $errors[] = 'Freelancer é obrigatório.';
-            if (empty($data['client_id']))    $errors[] = 'Cliente é obrigatório.';
-            if (empty($data['data_inicio']))  $errors[] = 'Data de início é obrigatória.';
-        }
+    //     if (!$updating) {
+    //         if (empty($data['trabalho_id']))  $errors[] = 'Trabalho é obrigatório.';
+    //         if (empty($data['freelancer_id'])) $errors[] = 'Freelancer é obrigatório.';
+    //         if (empty($data['client_id']))    $errors[] = 'Cliente é obrigatório.';
+    //         if (empty($data['data_inicio']))  $errors[] = 'Data de início é obrigatória.';
+    //     }
 
-        if (!empty($data['status']) && !in_array($data['status'], ['ativo', 'concluido', 'cancelado'])) {
-            $errors[] = 'Status inválido.';
-        }
+    //     if (!empty($data)) {
+    //         $errors[] = 'Status inválido.';
+    //     }
 
-        return $errors;
-    }
+    //     return $errors;
+    // }
 
     public function getValidationErrors(array $data, bool $updating = false): array
     {

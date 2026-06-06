@@ -3,17 +3,22 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller;
-use App\Services\{TrabalhoService, ClienteService};
+use App\Services\{TrabalhoService, ClienteService, UserService};
 
 class TrabalhoController extends Controller
 {
 	public function __construct(
 		protected TrabalhoService $trabalho,
-		protected ClienteService $cliente
+		protected ClienteService $cliente,
+		protected UserService    $usuario
 	){}
 
 	public function index(): void 
 	{
+		if(!$this->usuario->isLogged()) {
+			$this->redirect('/login');
+		}
+		
 		$trabalhos = $this->trabalho->getTodosTrabalhos();
 
 		$this->view('trabalhos',
@@ -25,15 +30,21 @@ class TrabalhoController extends Controller
 
 	public function create(): void 
 	{
+		if(($this->usuario->isLogged()) && !($_SESSION['USER'][0]->role === 'cliente')) {
+			echo "Apenas Clientes postam trabalho, inscreva-se como cliente";
+			$this->redirect('/login');
+		}
+
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-			$userId = $_SESSION['signup_user_id'];
+			$userId = $_SESSION['USER'][0]->id;
 
 			$clienteId = $this->cliente->getClienteById($userId);
 
 			$_POST['client_id'] = $clienteId[0]->id;
 
 			$this->trabalho->create($_POST);
+			$this->redirect('/trabalhos');
 		}
 
 		$this->view('criar_trabalho', []);

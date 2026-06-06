@@ -23,7 +23,7 @@ abstract class Controller
 
         throw new \Exception("Model ". $modelPath . "Not found");
     }
-
+    
     protected function redirect(string $link): void
     {
         header('Location: ' . config('base_url') . '/' . trim($link, '/'));

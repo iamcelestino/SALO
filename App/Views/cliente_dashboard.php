@@ -1,101 +1,33 @@
-<<<<<<< HEAD
-<?php $this->view('partials/head') ?>
-<body>
-    <main>
-<div class="min-h-screen bg-gray-50 py-12 px-6">
-    <div class="max-w-3xl mx-auto">
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900">Postar Trabalho</h1>
-            <p class="text-gray-500">Preencha os detalhes do serviço abaixo.</p>
-        </div>
-        <form action="/trabalhos/create" method="POST" class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 space-y-8">
-            <div>
-                <label for="titulo" class="block text-sm font-bold text-gray-700 mb-2">Título Profissional</label>
-                <input type="text" name="titulo" id="titulo" placeholder="Ex: Web Designer, Escritor..." class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition">
-            </div>
-
-            <div>
-                <label class="block text-sm font-bold text-gray-700 mb-2">Descrição do Serviço</label>
-                <textarea name="descricao" rows="4" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition" placeholder="Descreva as tarefas e requisitos..."></textarea>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2">Nível Requerido</label>
-                    <select name="nivel_requerido" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:ring-4 focus:ring-emerald-100 outline-none cursor-pointer">
-                        <option value="">Selecione o Nível</option>
-                        <option value="iniciante">Iniciante</option>
-                        <option value="intermediario">Intermediario</option>
-                        <option value="Senior">Senior</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label id="oracamento" class="block text-sm font-bold text-gray-700 mb-2">Orçamento ($)</label>
-                    <input type="number" name="orcamento" placeholder="Ex: 500" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:ring-4 focus:ring-emerald-100 outline-none">
-                </div>
-
-                <div>
-                    <label for="status" class="block text-sm font-bold text-gray-700 mb-2">Estado do Serviço</label>
-                    <select name="status" id="status" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:ring-4 focus:ring-emerald-100 outline-none cursor-pointer">
-                        <option value="">Estado do serviço</option>
-                        <option value="aberto">Aberto</option>
-                        <option value="em_andamento">Em andamento</option>
-                        <option value="fechado">Fechado</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="tipo" class="block text-sm font-bold text-gray-700 mb-2">Tipo de Serviço</label>
-                    <select name="tipo" id="tipo" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-transparent focus:ring-4 focus:ring-emerald-100 outline-none cursor-pointer">
-                        <option value="">Tipo de Serviço</option>
-                        <option value="fixo">Preço Fixo</option>
-                        <option value="hora">Por Hora</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="pt-6">
-                <button type="submit" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold hover:bg-emerald-700 transition shadow-lg shadow-emerald-100 text-lg">
-                    Criar Trabalho
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-=======
-
 <?php $this->view('partials/head') ?>
 <body class="bg-gray-50 font-sans text-gray-900">
     <div class="flex min-h-screen">
         <aside class="w-64 bg-emerald-950 text-white hidden md:flex flex-col sticky top-0 h-screen">
             <div class="p-8 text-2xl font-bold text-emerald-400 tracking-tight">
-                Line Solution.
+                Salo.
             </div>
             <nav class="flex-1 px-4 space-y-2">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-emerald-800 rounded-xl text-white font-medium">
+                <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>📊</span> Dashboard
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                <a href="/cliente/trabalhos" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>💼</span> Meus Trabalhos
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
-                    <span>💬</span> Mensagens
+                <a href="/cliente/propostas" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
+                    <span>💼</span> Propostas recebidas
                 </a>
-                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
-                    <span>💬</span> Contratos
+                <a href="/cliente/contrato" class="flex items-center gap-3 px-4 py-3 bg-emerald-800 rounded-xl text-white font-medium">
+                    <span>📄</span> Contratos
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-100/70 hover:bg-emerald-900 rounded-xl hover:text-white transition">
                     <span>⚙️</span> Configurações
                 </a>
             </nav>
-
             <div class="p-6 border-t border-emerald-900">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center font-bold">JD</div>
                     <div>
-                        <p class="text-sm font-bold">Celestino Trosso</p>
-                        <p class="text-xs text-emerald-400">Cliente</p>
+                        <p class="text-sm font-bold">John Doe</p>
+                        <p class="text-xs text-emerald-400">Freelancer</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +35,7 @@
 
         <main class="flex-1">
             <header class="bg-white border-b border-gray-200 py-4 px-8 flex justify-between items-center">
-                <h2 class="text-xl font-bold">Bem-vindo de volta, Celestino Trosso!</h2>
+                <h2 class="text-xl font-bold">Bem-vindo de volta, John!</h2>
                 <div class="flex items-center gap-4">
                     <button class="p-2 text-gray-400 hover:text-emerald-600">🔔</button>
                     <a href="/trabalhos/create" class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-emerald-700 transition">
@@ -120,12 +52,12 @@
                         <span class="text-emerald-600 text-xs font-bold mt-2 inline-block">↑ 2 este mês</span>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                        <p class="text-gray-500 text-sm font-medium">Gastos Totais</p>
-                        <h3 class="text-3xl font-bold text-gray-900 mt-1">AOA 4,250</h3>
+                        <p class="text-gray-500 text-sm font-medium">Ganhos Totais</p>
+                        <h3 class="text-3xl font-bold text-gray-900 mt-1">$4,250</h3>
                         <span class="text-emerald-600 text-xs font-bold mt-2 inline-block">+15% vs mês passado</span>
                     </div>
                     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                        <p class="text-gray-500 text-sm font-medium">Propostas Recebidas</p>
+                        <p class="text-gray-500 text-sm font-medium">Propostas Enviadas</p>
                         <h3 class="text-3xl font-bold text-gray-900 mt-1">45</h3>
                         <span class="text-gray-400 text-xs mt-2 inline-block">8 aguardando resposta</span>
                     </div>
@@ -142,30 +74,50 @@
                         <thead class="bg-gray-200">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Titulo</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Orcamento</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descricao</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Freelancer</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acções</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Orcamento</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nivel requerido</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Proposto</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status da Proposta</th>
+                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acções</th>
                             </tr>
                         </thead>
                             <?php foreach($trabalhos as $trabalho): ?>
                             <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho['nome_trabalho']; ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho['descricao']; ?> <br></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho['valor_proposto']; ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho['status_proposta']; ?></td>
-                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho['nome_freelancer']; ?></td>
-                                        <td class=" text-center font-bold">
-                                            <a href="<?=config('base_url')?>/trabalho/contrato/<?=$trabalho['freelancer_id']; ?>">Enviar Contrato</a>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->titulo; ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->descricao; ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->nome_freelancer; ?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->orcamento;?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->nivel_requerido?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->valor_proposto?></td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <?=$trabalho->status_proposta?>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <a href="/trabalho/update/<?=$trabalho->id;?>" title="">editar</a>
+                                            <a href="/trabalho/delete/<?=$trabalho->id;?>"title="">apagar</a>
+                                             <a href="/contrato/create/<?=$trabalho->id_trabalho;?>" title="">Enviar Contrato</a>
+                                          <a href="<?=$trabalho->id_trabalho;?>" title="">Ver perfil</a>
                                         </td>
                                     </tr>
                             </tbody>
                             <?php endforeach ?>
-
-                            <?php endif ?>
-                        </table>
+                    <?php else: ?>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"> <?=$trabalho->titulo; ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->descricao; ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->orcamento;?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->nivel_requerido?></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><?=$trabalho->status?></td>
+                                <td class=" text-center text-2xl">
+                                </td>
+                            </tr>
+                        </tbody>
+                    <?php endif ?>
+                </table>
                         </table>
                     </div>
                 </div>
@@ -174,4 +126,3 @@
     </div>
 </body>
 </html>
->>>>>>> 82131aa (add more files)

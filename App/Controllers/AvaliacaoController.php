@@ -17,7 +17,6 @@ class AvaliacaoController extends Controller
 
     public function index(): void
     {
-        $this->requireAuth();
         $userId      = (int) $_SESSION['user']['id'];
         $avaliacoes  = $this->avaliacaoService->getAvaliacoesByAvaliado($userId);
         $this->view('avaliacao/index', compact('avaliacoes'));
@@ -25,7 +24,6 @@ class AvaliacaoController extends Controller
 
     public function create(int $contratoId): void
     {
-        $this->requireAuth();
 
         $contrato = $this->contratoModel->find($contratoId);
         if (!$contrato) {

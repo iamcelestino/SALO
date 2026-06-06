@@ -47,6 +47,21 @@ class UserService
     {
         $_SESSION['USER'] = $user;
     }
-    
+
+    public static function isLoggedOut(): void
+    {
+        if(isset($_SESSION['USER'])) {
+            unset($_SESSION['USER']);
+        }
+    }
+
+    public static function isLogged(): bool
+    {
+        if(isset($_SESSION['USER'])) {
+            return true;
+        }
+        return false;
+    }
+
 }
 

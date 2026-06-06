@@ -24,6 +24,7 @@ class SignupController extends Controller
             $redirect = match($role) {
                 'cliente' => "/cliente/signup",
                 'freelancer' => "/freelancer/signup",
+                'admin' => "/login",
                 default => "/signup",
             };
 

@@ -3,21 +3,27 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller;
-use App\Services\{PropostaService, FreelancerService};
+use App\Services\{PropostaService, FreelancerService, UserService};
 
 class PropostaController extends Controller
 {
 	public function __construct(
 		protected FreelancerService $freelancer,
-		protected PropostaService $proposta
+		protected PropostaService   $proposta,
+		protected UserService       $usuario
 	){}
-
+	
 	public function index(): void 
 	{
+		if(!$this->usuario->isLogged()) {
+			$this->redirect('/login');
+		}
+
 		$userId = $_SESSION['USER'][0]->id ?? null;
-		$freelancer = $this->freelancer->getByUserId($userId);
+		dd($_SESSION['USER']);
+		
+		$freelancer = $this->freelancer->getByFreelancerByUserId($userId);
 		$freelancer_id = $freelancer[0]->id;
-		print($freelancer_id);
 
 		$propostas = $this->proposta->getPropostaByFreelancer($freelancer_id);
 
@@ -30,6 +36,11 @@ class PropostaController extends Controller
 
 	public function create(int $id): void 
 	{
+		if(($this->usuario->isLogged()) && !($_SESSION['USER'][0]->role === 'freelancer')) {
+			echo "Apenas Freelancer Enviam Propostas";
+			$this->redirect('/login');
+		}
+
 		if(!$id) {
 			echo "Quer enviar a proposta para que trabalho?";
 		}
@@ -38,15 +49,14 @@ class PropostaController extends Controller
 
 		$userId = $_SESSION['USER'][0]->id ?? null;
 
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$_POST['trabalhos_id'] = $trabalhoId;
-			$_POST['freelancer_id'] = getloggedInFreelancer($userId, $this->freelancer) ?? null;
-			$this->proposta->create($_POST);
-			$this->redirect('/trabalhos');
-		}
-
-
+		// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		// 	$_POST['trabalhos_id'] = $trabalhoId;
+		// 	$_POST['freelancer_id'] = getloggedInFreelancer($userId, $this->freelancer) ?? null;
+		// 	$this->proposta->create($_POST);
+		// 	$this->redirect('/trabalhos');
+		// }
 		$this->view('criar_proposta',['trabalhoId' => $trabalhoId]);
+		$this->redirect('/dashboard');
 	}
 
 	public function update(int $id): void 
